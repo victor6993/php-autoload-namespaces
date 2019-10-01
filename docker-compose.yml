@@ -1,0 +1,11 @@
+version: "3"
+services:
+  webserver:
+    build: .
+    container_name: webserver
+    environment:
+      - APACHE_RUN_USER=#1000
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
