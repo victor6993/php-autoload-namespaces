@@ -6,6 +6,7 @@ RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql xml pcntl \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN useradd -u 1000 kiko
 
 # Install Composer
 ##################
