@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:7.3-apache
 
 RUN apt-get update
 RUN apt-get install -y git zip libxml2-dev wget vim libfreetype6-dev libjpeg62-turbo-dev libpng-dev
