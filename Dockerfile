@@ -6,7 +6,10 @@ RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql xml pcntl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
-RUN useradd -u 1000 kiko
+ARG user
+ARG uid
+
+RUN useradd -m -u $uid $user
 
 # Install Composer
 ##################
@@ -22,8 +25,11 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 RUN echo "alias ll='ls -lrat'" >> /root/.bashrc
+RUN echo "alias ll='ls -lrat'" >> /home/$user/.bashrc
 RUN echo "export LS_OPTIONS='--color=auto'" >> /root/.bashrc
+RUN echo "export LS_OPTIONS='--color=auto'" >> /home/$user/.bashrc
 RUN echo "alias ls='ls \$LS_OPTIONS'" >> /root/.bashrc
+RUN echo "alias ls='ls \$LS_OPTIONS'" >> /home/$user/.bashrc
 
 WORKDIR /var/www/html
 

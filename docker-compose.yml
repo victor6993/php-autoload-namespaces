@@ -1,7 +1,12 @@
 version: "3"
 services:
   webserver:
-    build: .
+    build:
+      context: .
+      args:
+        user: kiko
+        uid: 1000
+    image: php-environment
     container_name: webserver-composer
     environment:
       - APACHE_RUN_USER=#1000
