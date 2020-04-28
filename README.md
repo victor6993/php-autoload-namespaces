@@ -4,27 +4,43 @@ Este repositorio contiene los pasos para crear una imagen de docker que contenga
 
 Igualmente tiene composer instalado y el instalador de symfony.
 
-### Creación de la imagen
-
-**docker build -t symfony-php-apache .**
-
 ### Ejecución del contenedor
 
-Para ejecutar el contenedor, id a cualquier directorio (vacío si vamos a crear por primera vez nuestra aplicación Symfony) y ejecutad lo siguiente (el puerto y el volumen lo podéis configurar como querais):
+Disponemos de un fichero _docker-compose.yml_ con el que levantar el contenedor y al mismo tiempo creará la imagen de Docker.
 
-**docker run -it --rm -p 8080:80 -v "$PWD":/application --name symfony-php symfony-php-apache bash**
+Antes de levantar el contenedor tenemos que modificar el fichero _docker-compose.yml_ y sustituir los valores de user y uid por los que correspondan.
 
-### Instalar symfony skeleton (dependencias mínimas)
+En el fichero de ejemplo están kiko y 1000 
 
-Para instalar symfony con las dependencias mínimas, ejecutar lo siguiente:
+**nota:** también se utiliza el valor 1000 para decirle al servidor Apache que se ejcute con dicho id. 
 
-**composer create-project symfony/skeleton .**
+El valor 1000 es id por defecto que se crea (en distribuciones Linux como por ejemplo Ubuntu), para el primer usuario, por lo tanto es posible que 
+os sirva, lo único que tenéis que hacer es es cambiar el nombre de usuario por el de vuestro usuario en vuestra máquina.
 
-Y la manera sencilla de levantar un servidor web es utilizar el servidor embebido en php (ideal para desarrollo): 
+Para saber el uid y el nombre de usuario ejecutar lo siguiente:
 
-**php -S 0.0.0.0:80 -t public**
+```
+id
+```  
 
-O usar el propio apache que ya está levantado.
+dando como resultado algo parecido a esto:
+ 
+ ```
+uid=1000(kiko) gid=1000(kiko) groups=1000(kiko),4(adm).......
+```
 
-Ahora ya podréis acceder en vuestro navegador a la url http://localhost:8080 y comprobar que symfony se ha instalado correctamente
+Una vez levantado, podemos asegurarnos que está todo correcto ejecutando:
+
+```
+docker-compose ps
+```
+
+Para 'entrar' en el contenedor utilizaremos la opción **-u** para indicar el usuario creado anteriormente:
+
+```
+docker-compose exec -u kiko webserver bash
+```
+
+El puerto utilizado es el **8080**, asi que solamente tendréis que crear algún fichero en el raiz y acceder a la url
+ http://localhost:8080 de vuestro navegador y ver que se ejecuta correctamente.
 
