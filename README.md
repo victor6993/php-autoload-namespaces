@@ -44,3 +44,42 @@ docker-compose exec -u kiko webserver bash
 El puerto utilizado es el **8080**, asi que solamente tendréis que crear algún fichero en el raiz y acceder a la url
  http://localhost:8080 de vuestro navegador y ver que se ejecuta correctamente.
 
+
+# Instrucciones para configurar XDEBUG en Visual Studio Code
+
+Para configurar XDebug en VS Code y usarlo en este proyecto, hay que realizar los siguientes pasos:
+
+- Instalar la extensión "PHP Debug" en VS Code.
+- Abrir el proyecto en VS Code en la carpeta raiz, al mismo nivel que están los fichero Dockerfile y docker-compose.yml
+- Sobre el menú de la izquierda, pulsar en la opción "Run" (representado con un triángulo que simboliza el "play" de un vídeo, bajo el dibujo de una cucaracha, "bug" en inglés)
+- Pinchar sobre "create a launch.json file"
+- Copiar el siguiente JSON:
+~~~
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9000,
+            "log": true,
+            "externalConsole": false,
+            "pathMappings": {
+                "/var/www/html": "${workspaceRoot}",
+            },
+            "ignore": [
+                "**/vendor/**/*.php"
+            ]
+        }
+    ]
+}
+~~~
+- Abrir un terminal, y ejecutar el comando "ifconfig"
+- Obtener la dirección IP de la red llamada "docker0". Suele ser un número que empiece en 192.168 ó bien en 172
+- Si la IP es distinta a 192.168.0.1, ir al fichero conf/xdebug.ini, y poner el valor correcto en el parámetro xdebug.remote_host
+- Por último, en el terminal, ejecutar "docker-compose up -d"
+
