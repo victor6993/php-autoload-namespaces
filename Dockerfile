@@ -6,6 +6,13 @@ RUN docker-php-ext-install mysqli mbstring pdo pdo_mysql xml pcntl \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN pecl install xdebug 
+RUN docker-php-ext-enable xdebug
+
+COPY build/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini.new
+RUN cat /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini >> /usr/local/etc/php/conf.d/xdebug.ini.new \
+    && mv /usr/local/etc/php/conf.d/xdebug.ini.new /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 ARG user
 ARG uid
 
