@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        user: kiko
+        user: victor
         uid: 1000
     image: php-environment
     container_name: webserver-composer
