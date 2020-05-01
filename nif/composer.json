@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ulabox/nif-validator": "^1.2",
+        "monolog/monolog": "^2.0"
+    }
+}

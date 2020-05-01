@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ricardofiorani/php-legofy": "^1.0",
+        "monolog/monolog": "^2.0"
+    }
+}

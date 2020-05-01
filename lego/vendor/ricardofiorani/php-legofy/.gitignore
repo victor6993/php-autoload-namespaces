@@ -1,0 +1,7 @@
+.idea
+composer.lock
+vendor
+temp
+index.php
+build
+.env

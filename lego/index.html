@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="Author" content="Víctor Wang">
+ <title>Legofy</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link href="styles.css" rel="stylesheet">
+</head>
+<body class="text-center">
+  <form class="form-signin" action="index.php" method="POST" enctype="multipart/form-data">
+    <h1 class="h3 mb-3 font-weight-normal">Choose your image</h1>
+    <input type="file" name="foto" class="form-control">
+    <select name="resolution" class="form-control">
+      <option value="">Choose your resolution</option>
+      <option value="1">Low resolution</option>
+      <option value="2">Mid resolution</option>
+      <option value="3">High resolution</option>
+    </select>
+    <input type="checkbox" name="legoPalette" class="legoPalette"><label for="legoPaletteInput" > Do you want Lego official colours?</label>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Legofy</button>
+  </form>
+</body>
+</html>

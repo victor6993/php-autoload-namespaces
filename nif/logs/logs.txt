@@ -1,0 +1,4 @@
+[2020-05-01T11:41:18.761373+00:00] name.WARNING: El dni 123123d no es válido. [] []
+[2020-05-01T15:04:02.851018+00:00] name.WARNING: El dni asdsad no es válido. [] []
+[2020-05-01T15:04:04.447078+00:00] name.WARNING: El dni sadsad no es válido. [] []
+[2020-05-01T15:04:05.765961+00:00] name.WARNING: El dni 123 no es válido. [] []
