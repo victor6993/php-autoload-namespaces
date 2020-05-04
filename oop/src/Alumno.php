@@ -4,7 +4,7 @@ namespace Upgrade;
 
 class Alumno extends Persona{
 
-  private $asignaturas;
+  public $asignaturas;
 
   public function __construct(string $nombre, int $edad)
   {
@@ -12,11 +12,16 @@ class Alumno extends Persona{
     $this->edad = $edad;
   }
 
-  public function addAsignaturas($asignatura) {
-    $this->asignaturas[] = $asignatura;
+  public function addAsignaturas(string $nombreAsignatura, string $descripcion, string $profesor, int $horas) {
+    $this->asignaturas[] = new Asignatura($nombreAsignatura, $descripcion, $profesor, $horas);
   }
 
   public function getAsignaturas(){
-    return implode(", ", $this->asignaturas);
+    $todasLasAsignaturas = [];
+    foreach($this->asignaturas as $asignatura) {
+      $todasLasAsignaturas[] = $asignatura->nombreAsignatura;
+    }
+
+    return implode(", ", $todasLasAsignaturas);
   }
 }

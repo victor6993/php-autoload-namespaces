@@ -5,8 +5,12 @@ require 'vendor/autoload.php';
 
 
 $alumno = new Alumno("Francesco", 24);
-$alumno->addAsignaturas("PHP");
-$alumno->addAsignaturas("Javascript");
+// $alumno->addAsignaturas("PHP");
+// $alumno->addAsignaturas("Javascript");
+$alumno->addAsignaturas("PHP","Lenguaje de backend","Kiko",100);
+$alumno->addAsignaturas("HTML-CSS","Lenguajes de frontend","Jose Manuel",120);
+
+// echo "El alumno {$alumno->getNombre()} tiene {$alumno->getEdad()} años y estudia {$alumno->asignaturas[0]->getNombreAsignatura()} y {$alumno->asignaturas[1]->getNombreAsignatura()}.<br>";
 
 echo "El alumno {$alumno->getNombre()} tiene {$alumno->getEdad()} años y estudia {$alumno->getAsignaturas()}.<br>";
 

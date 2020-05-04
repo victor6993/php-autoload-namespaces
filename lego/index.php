@@ -25,11 +25,11 @@ $source = $_FILES['foto'];
 try{
   $output = $legofy->convertToLego($source['tmp_name'], $resolutionMultiplier, $useLegoPalette);
   echo $output->response();
-  $output->save("./images/".$source['name'],$resolutionMultiplier);
-  $logInfo->info("Imagen transformada.");
+  // $output->save("./images/".$source['name'],$resolutionMultiplier);
+  // $logInfo->info("Imagen transformada.");
 
 } catch (Exception $e){
 
-  $logError->error("Está intentando renderizar un valor nulo, elija una imagen.");
+  // $logError->error("Está intentando renderizar un valor nulo, elija una imagen.");
   echo "Debe elegir un archivo.<br>";
 }
