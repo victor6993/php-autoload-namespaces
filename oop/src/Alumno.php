@@ -19,7 +19,7 @@ class Alumno extends Persona{
   public function getAsignaturas(){
     $todasLasAsignaturas = [];
     foreach($this->asignaturas as $asignatura) {
-      $todasLasAsignaturas[] = $asignatura->nombreAsignatura;
+      $todasLasAsignaturas[] = $asignatura->getNombreAsignatura();
     }
 
     return implode(", ", $todasLasAsignaturas);

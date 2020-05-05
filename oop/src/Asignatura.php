@@ -3,10 +3,10 @@
 namespace Upgrade;
 
 class Asignatura {
-  public $nombreAsignatura;
-  public $descripcion;
-  public $profesor;
-  public $horas;
+  private $nombreAsignatura;
+  private $descripcion;
+  private $profesor;
+  private $horas;
 
   public function __construct(string $nombreAsignatura, string $descripcion, string $profesor, int $horas)
   {
